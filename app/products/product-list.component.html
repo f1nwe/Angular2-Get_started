@@ -25,7 +25,7 @@
                             {{showImage ? 'Hide' : 'Show'}} Image
                         </button>
                     </th>
-                    <th>Poduct</th>
+                    <th>Product</th>
                     <th>Code</th>
                     <th>Available</th>
                     <th>Price</th>
@@ -45,7 +45,11 @@
                         <td>{{product.productCode | lowercase}}</td>
                         <td>{{product.releaseDate}}</td>
                         <td>{{product.price | currency:'USD':true:'1.2-2'}}</td>
-                        <td>{{product.starRating}}</td>
+                        <td>
+                            <ai-star [rating]='product.starRating'
+                                     (ratingClicked)="onRatingClicked($event)">
+                            </ai-star>
+                        </td>
                     </tr>
                 </tbody>
             </table>
