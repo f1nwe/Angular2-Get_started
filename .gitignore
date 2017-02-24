@@ -16,11 +16,9 @@ node_modules
 typings
 **/app/**/*.js
 **/app/**/*.map
-node_modules
-jspm_packages
-bower_components
 jspm_packages
 bower_components
 aot/*
 dist/*
 
+/npm-debug.log
