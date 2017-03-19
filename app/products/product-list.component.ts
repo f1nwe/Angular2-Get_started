@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {IProduct} from "./product";
 import {ProductService} from "./product.service";
+import {error} from "util";
 
 @Component({
     selector: 'pm-products',
@@ -15,12 +16,17 @@ export class ProductListComponent {
     showImage: boolean = false;
     listFilter: string = '';
     products: IProduct[];
+    errorMessage: string;
     constructor(private _productService: ProductService) {
 
     }
 
     ngOnInit(): void {
-        this.products = this._productService.getProducts()
+        this._productService.getProducts()
+            .subscribe(
+                products => this.products = products,
+                error => this.errorMessage = <any>error
+            )
     }
 
     toggleImage(): void {
